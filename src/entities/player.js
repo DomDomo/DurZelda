@@ -34,7 +34,7 @@ export function setPlayerControls(k, player) {
   k.onKeyDown((key) => {
     if (gameState.getFreezePlayer()) return;
     if (k.isKeyDown("space")) return;
-    if (["left"].includes(key)) {
+    if (["left", "a"].includes(key)) {
       if (areAnyOfTheseKeysDown(k, ["up", "down"])) return;
       player.flipX = true;
       playAnimIfNotPlaying(player, "player-side");
@@ -43,7 +43,7 @@ export function setPlayerControls(k, player) {
       return;
     }
 
-    if (["right"].includes(key)) {
+    if (["right", "d"].includes(key)) {
       if (areAnyOfTheseKeysDown(k, ["up", "down"])) return;
       player.flipX = false;
       playAnimIfNotPlaying(player, "player-side");
@@ -52,14 +52,14 @@ export function setPlayerControls(k, player) {
       return;
     }
 
-    if (["up"].includes(key)) {
+    if (["up", "w"].includes(key)) {
       playAnimIfNotPlaying(player, "player-up");
       player.move(0, -player.speed);
       player.direction = "up";
       return;
     }
 
-    if (["down"].includes(key)) {
+    if (["down", "s"].includes(key)) {
       playAnimIfNotPlaying(player, "player-down");
       player.move(0, player.speed);
       player.direction = "down";
